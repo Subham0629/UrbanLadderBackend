@@ -1,8 +1,8 @@
 const express=require("express");
 const { connection } = require("./db");
-const app=express();
+
 require("dotenv").config();
-const cors=require("cors");
+var cors = require('cors');
 const { userRouter } = require("./Routes/user.route");
 const { auth } = require("./Middleware/auth.middleware");
 const { sofaRouter } = require("./Routes/sofa.route");
@@ -11,9 +11,10 @@ const { rackRouter } = require("./Routes/racks.route");
 const { floorRouter } = require("./Routes/floor.route");
 const { chairRouter } = require("./Routes/chair.route");
 const { cartRouter } = require("./Routes/cart.route");
-
-app.use(cors());
+const app=express();
 app.use(express.json());
+app.use(cors());
+
 app.use("/users",userRouter);
 
 app.use("/sofas",sofaRouter);
